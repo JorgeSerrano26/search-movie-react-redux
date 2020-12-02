@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const OMDB_KEY = "1802e647";
 
-const ListOfMovies = (props) => {
+const ListOfMovies = () => {
     const movies = useSelector(state => state.movies);
     const [movieTitle, setMovieTitle] = useState('');
     const cancelSource = useRef(null);
@@ -23,7 +23,6 @@ const ListOfMovies = (props) => {
 
     const fetchMovies = async (title) => {
         if (cancelSource.current) {
-            console.log("true")
             cancelSource.current.cancel();
         }
         cancelSource.current = axios.CancelToken.source();
